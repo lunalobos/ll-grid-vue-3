@@ -1,8 +1,26 @@
 {
   "name": "ll-grid-vue-3",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0-ALPHA",
   "type": "module",
+  "description": "A grid component for Vue 3 with TailwindCSS styling and reactive state management.",
+  "keywords": [
+    "grid",
+    "vuejs",
+    "reactive",
+    "tailwindcss",
+    "component",
+    "ui",
+    "vue3"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lunalobos/ll-grid-vue-3"
+  },
+  "author": "lunalobos",
+  "homepage": "llgridvue3.vercel.app",
+  "main": "./dist/ll-grid.js",
+  "unpkg": "dist/ll-grid.umd.cjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

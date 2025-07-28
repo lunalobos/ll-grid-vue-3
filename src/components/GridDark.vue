@@ -1,7 +1,7 @@
 <template>
     <div class="border border-gray-600 rounded-xl">
-        <div class="flex flex-row justify-center p-4 rounded-t-xl bg-gray-800 ">
-            <h3 class="text-lg font-medium text-gray-200">{{ title }}</h3>
+        <div class="flex flex-row justify-center p-1 rounded-t-xl bg-gray-600 ">
+            <h3 v-show="getter().showTitle" class="text-lg font-medium text-gray-200 m-1">{{ title }}</h3>
         </div>
         <div class="grid" :style="`grid-template-columns: repeat(${widthInfo.total}, minmax(0, 1fr))`">
             <GridHeaderDark v-for="header in headers" :getter="props.getter" :name="header.name"
@@ -35,7 +35,7 @@
             <label class="p-1 mr-1 font-medium text-gray-200">
                 Rows per page:
             </label>
-            <select v-model="pageSize" class="bg-gray-900 rounded-lg p-1 mr-2 text-gray-50">
+            <select class="bg-gray-900 rounded-lg p-1 mr-2 text-gray-50" @change="(event) => props.getter().setPageSize(event.target.value)">
                 <option v-for="size of pagination" class="bg-gray-900">{{ size }}</option>
             </select>
             <button class="rounded-lg hover:bg-gray-700 cursor-pointer p-1 text-gray-50" @click="() => props.getter().firstPage()">
@@ -84,8 +84,6 @@ const pagesLabelContent = ref(`Page ${props.getter().currentPage()} of ${props.g
 
 const pagination = ref(props.getter().pagination);
 
-const pageSize = ref(props.getter().pageSize);
-
 function isOdd(index) {
     return index % 2 === 0;
 }
@@ -99,13 +97,6 @@ watch(
         headers.value = props.getter().headers;
         pagesLabelContent.value = `Page ${props.getter().currentPage()} of ${props.getter().pages}`;
         pagination.value = props.getter().pagination;
-    }
-);
-
-watch(
-    pageSize,
-    () => {
-        props.getter().setPageSize(pageSize.value);
     }
 );
 
