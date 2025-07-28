@@ -158,8 +158,8 @@
 	import GridGreyMonochrome from "@/components/GridGreyMonochrome.vue";
 	import { Table } from "@/scripts/classes";
 
-	import Rocket from "./components/icons/Rocket.vue";
-	import GridDark from "./components/GridDark.vue";
+	import Rocket from "@/components/icons/Rocket.vue";
+	import GridDark from "@/components/GridDark.vue";
 
 	const exampleModels = [
 		{
