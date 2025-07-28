@@ -44,9 +44,7 @@
 				<code>GridDark</code>.
 			</p>
 
-			<pre
-				class="bg-gray-800 p-4 rounded-lg text-sm text-white overflow-auto"
-			>
+			<pre class="bg-gray-800 p-4 rounded-lg text-sm text-white overflow-auto">
 <code><span class="text-gray-400">&lt;</span><span class="text-sky-500">template</span><span class="text-gray-400">&gt;</span>
   <span class="text-gray-400">&lt;</span><span class="text-emerald-400">GridGreyMonochrome</span> <span class="text-white">:</span><span class="text-cyan-200">getter</span><span class="text-white">="</span><span class="text-yellow-200">()</span> <span class="text-sky-300">=></span><span class="text-cyan-200"> table</span><span class="text-white">"</span> <span class="text-cyan-200">class</span>=<span class="text-orange-300">"inline-block"</span> <span class="text-cyan-200">style</span>=<span class="text-orange-300">"width: 1100px"</span><span class="text-gray-400">/&gt;</span>
 <span class="text-gray-400">&lt;/</span><span class="text-sky-500">template</span><span class="text-gray-400">&gt;</span>
