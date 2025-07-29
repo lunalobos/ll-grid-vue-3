@@ -58,8 +58,7 @@
 <span class="text-gray-400">&lt;/</span><span class="text-sky-500">template</span><span class="text-gray-400">&gt;</span>
 
 <span class="text-gray-400">&lt;</span><span class="text-sky-500">script</span> <span class="text-cyan-200">setup</span><span class="text-gray-400">&gt;</span>
-  <span class="text-fuchsia-300">import</span> { <span class="text-cyan-200">Table</span> } <span class="text-fuchsia-300">from</span> <span class="text-orange-300">"ll-grid"</span>;
-  <span class="text-fuchsia-300">import</span> <span class="text-cyan-200">GridGreyMonochrome</span> <span class="text-fuchsia-300">from</span> <span class="text-orange-300">"ll-grid"</span>;
+  <span class="text-fuchsia-300">import</span> { <span class="text-cyan-200">GridGreyMonochrome, Table</span> } <span class="text-fuchsia-300">from</span> <span class="text-orange-300">"ll-grid-vue-3"</span>;
   <span class="text-fuchsia-300">import</span> { <span class="text-cyan-200">exampleModels, exampleTypes</span> } <span class="text-fuchsia-300">from</span> <span class="text-orange-300">"./scripts/example"</span>;
 
   <span class="text-sky-500">const</span> <span class="text-sky-300">exampleModels</span> = [
