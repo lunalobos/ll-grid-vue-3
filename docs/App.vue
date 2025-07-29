@@ -23,7 +23,7 @@
 			<div class="p-1">
 				<h2 class="text-xl font-bold mb-4">Getting started</h2>
 			</div>
-			<p class="mb-4">
+			<p class="mb-2">
 				You wil need to start by installing the package. You can do this by
 				running the following command:
 			</p>
@@ -31,7 +31,15 @@
 				class="bg-gray-800 p-4 rounded-lg text-sm text-green-200 overflow-auto"
 			>
 <code>$ npm install ll-grid-vue-3</code></pre>
+			<p class="mt-2 mb-2">
+				And you will need to add the css to your main.js file:
+			</p>
+			<pre
+				class="bg-gray-800 p-4 rounded-lg text-sm text-white overflow-auto"
+			>
+<code><span class="text-fuchsia-300">import</span> <span class="text-orange-300">"ll-grid-vue-3/dist/ll-grid.css";</span></code></pre>
 			<p class="mt-1 mb-4">
+			
 				After that you can import the component in your Vue 3 application. You
 				will need to import the one of the grid components available. At the
 				moment there are two: <code>GridDark</code> and

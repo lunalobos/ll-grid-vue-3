@@ -16,6 +16,12 @@ You will need to start by installing the package. You can do this by running the
 npm install ll-grid-vue-3
 ```
 
+And you will need to add the css to your main.js file:
+
+```js
+import "ll-grid-vue-3/dist/ll-grid.css";
+```
+
 After that you can import the component in your Vue 3 application. You will need to import one of the grid components available. At the moment there are two: `GridDark` and `GridGreyMonochrome`.  
 The `GridDark` component is a dark themed grid, while the `GridGreyMonochrome` component is a light themed grid.  
 The following example shows how to import the `GridGreyMonochrome` component and use it in your application.  
