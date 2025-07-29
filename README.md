@@ -1,4 +1,4 @@
-![npm](https://img.shields.io/npm/v/ll-grid-vue-3?logo=npm)
+[![npm](https://img.shields.io/npm/v/ll-grid-vue-3?logo=npm)](https://www.npmjs.com/package/ll-grid-vue-3)
 ![License](https://img.shields.io/github/license/lunalobos/ll-grid-vue-3)
 
 ![LL-Grid](https://media.canva.com/v2/image-resize/format:PNG/height:577/quality:100/uri:ifs%3A%2F%2FM%2F69dad9c4-d678-4d8c-9385-283389ffb108/watermark:F/width:921?csig=AAAAAAAAAAAAAAAAAAAAAFQMqkR3ZJEelnUhgh1uIBg9Jxx6vCWZF6_tYvGSfTs6&exp=1753748750&osig=AAAAAAAAAAAAAAAAAAAAANm_zzyQL1UH9JjjtDU6dTdecJ9quDSEa8WXO6Zn8Z_2&signer=media-rpc&x-canva-quality=screen_2x)
@@ -33,8 +33,7 @@ You can use the `GridDark` component in the same way, just replace `GridGreyMono
 </template>
 
 <script setup>
-  import { Table } from "ll-grid-vue-3";
-  import GridGreyMonochrome from "ll-grid-vue-3";
+  import { GridGreyMonochrome, Table } from "ll-grid-vue-3";
 
   const exampleModels = [
     {
