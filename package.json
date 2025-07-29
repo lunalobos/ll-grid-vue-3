@@ -1,6 +1,6 @@
 {
   "name": "ll-grid-vue-3",
-  "version": "1.0.0-ALPHA",
+  "version": "1.0.1-ALPHA",
   "type": "module",
   "description": "A grid component for Vue 3 with TailwindCSS styling and reactive state management.",
   "keywords": [
