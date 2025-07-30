@@ -1,1 +1,5 @@
 /.vscode
+/docs
+index.html
+src/scripts/example.js
+src/components/Modal.vue
