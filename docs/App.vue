@@ -34,12 +34,9 @@
 			<p class="mt-2 mb-2">
 				And you will need to add the css to your main.js file:
 			</p>
-			<pre
-				class="bg-gray-800 p-4 rounded-lg text-sm text-white overflow-auto"
-			>
+			<pre class="bg-gray-800 p-4 rounded-lg text-sm text-white overflow-auto">
 <code><span class="text-fuchsia-300">import</span> <span class="text-orange-300">"ll-grid-vue-3/dist/ll-grid.css";</span></code></pre>
 			<p class="mt-1 mb-4">
-			
 				After that you can import the component in your Vue 3 application. You
 				will need to import the one of the grid components available. At the
 				moment there are two: <code>GridDark</code> and
@@ -54,7 +51,7 @@
 
 			<pre class="bg-gray-800 p-4 rounded-lg text-sm text-white overflow-auto">
 <code><span class="text-gray-400">&lt;</span><span class="text-sky-500">template</span><span class="text-gray-400">&gt;</span>
-  <span class="text-gray-400">&lt;</span><span class="text-emerald-400">GridGreyMonochrome</span> <span class="text-white">:</span><span class="text-cyan-200">getter</span><span class="text-white">="</span><span class="text-yellow-200">()</span> <span class="text-sky-300">=></span><span class="text-cyan-200"> table</span><span class="text-white">"</span> <span class="text-cyan-200">class</span>=<span class="text-orange-300">"inline-block"</span> <span class="text-cyan-200">style</span>=<span class="text-orange-300">"width: 1100px"</span><span class="text-gray-400">/&gt;</span>
+  <span class="text-gray-400">&lt;</span><span class="text-emerald-400">GridEmerald</span> <span class="text-white">:</span><span class="text-cyan-200">getter</span><span class="text-white">="</span><span class="text-yellow-200">()</span> <span class="text-sky-300">=></span><span class="text-cyan-200"> table</span><span class="text-white">"</span> <span class="text-cyan-200">class</span>=<span class="text-orange-300">"inline-block"</span> <span class="text-cyan-200">style</span>=<span class="text-orange-300">"width: 1100px"</span><span class="text-gray-400">/&gt;</span>
 <span class="text-gray-400">&lt;/</span><span class="text-sky-500">template</span><span class="text-gray-400">&gt;</span>
 
 <span class="text-gray-400">&lt;</span><span class="text-sky-500">script</span> <span class="text-cyan-200">setup</span><span class="text-gray-400">&gt;</span>
@@ -111,9 +108,20 @@
 
   <span class="text-sky-500">const</span> <span class="text-sky-300">table</span> = <span class="text-sky-500">new</span> <span class="text-emerald-400">Table</span>(<span class="text-orange-300">"My Table"</span>, <span class="text-sky-300">exampleModels</span>, <span class="text-sky-300">options</span>);
 <span class="text-gray-400">&lt;/<span class="text-sky-500">script</span>&gt;</span></code></pre>
-			<p class="mt-2 mb-4">
-				This how a GridGreyMonochrome component looks like:
-			</p>
+			<p class="mt-2 mb-4">Here are some example for different themes:</p>
+			<h3 class="mt-2 mb-4 text-lg text-center font-medium">GridEmerald</h3>
+			<div
+				class="flex flex-row rounded-lg p-4 mb-6 justify-center items-center"
+			>
+				<GridEmerald
+					:getter="() => tableEmerald"
+					class="inline-block"
+					style="width: 1100px"
+				/>
+			</div>
+			<h3 class="mt-2 mb-4 text-lg text-center font-medium">
+				GridGreyMonochrome
+			</h3>
 			<div
 				class="flex flex-row rounded-lg p-4 mb-6 justify-center items-center"
 			>
@@ -123,7 +131,7 @@
 					style="width: 1100px"
 				/>
 			</div>
-			<p class="mt-2 mb-4">And this how a GridDark component looks like:</p>
+			<h3 class="mt-2 mb-4 text-lg text-center font-medium">GridDark</h3>
 			<div
 				class="flex flex-row rounded-lg p-4 mb-6 justify-center items-center"
 			>
@@ -133,6 +141,7 @@
 					style="width: 1100px"
 				/>
 			</div>
+			<h2 class="text-xl font-bold mb-4">Considerations on reactivity</h2>
 			<p class="mb-4">
 				The <code>getter</code> function is a function that returns the table
 				object. This is used to avoid create a big reactive object. The
@@ -149,7 +158,7 @@
 				otherwise reactivity will not work.
 			</p>
 			<pre
-				class="bg-gray-800 p-4 rounded-lg text-sm text-white overflow-auto"
+				class="bg-gray-800 p-4 rounded-lg text-sm text-white overflow-auto mb-4"
 			><code>  <span class="text-sky-500">const</span> <span class="text-sky-300">newContent</span> = [
     ...
   ];
@@ -157,6 +166,55 @@
   <span class="text-green-200">// Set the new content for the table and specify the types of the columns</span>
   <span class="text-green-200">// This wil update the grid</span>
   <span class="text-sky-300">table</span>.<span class="text-yellow-300">setContent</span>(<span class="text-sky-300">table</span>.<span class="text-cyan-200">name</span>, <span class="text-sky-300">newContent</span>);</code></pre>
+			<h2 class="text-xl font-bold mb-4">Adding buttons</h2>
+			<p class="mb-4">
+				You can add buttons to the table by using the
+				<code><span class="text-yellow-700">addButton</span></code> method of
+				the table object. This wil create a new column with a button for each
+				row.
+			</p>
+			<p class="mb-4">
+				Buttons has a predetermined style and you can pass an svg icon wrapped as a
+				vue component. Also you will need to pass the function that will be
+				executed when the button is clicked, the button text, and the column
+				name.
+			</p>
+			<p class="mb-4">
+				Be aware that the function will receive the model of the row as an
+				argument. This is convenient, for example, if you want to open a modal
+				with current row's data.
+			</p>
+			<pre
+				class="bg-gray-800 p-4 rounded-lg text-sm text-white overflow-auto mb-4"
+			>
+<code>
+<span class="text-fuchsia-300">import</span> { <span class="text-cyan-200">Table</span> } <span class="text-fuchsia-300">from</span> <span class="text-orange-300">"ll-grid-vue-3"</span>;
+<span class="text-fuchsia-300">import</span> OpenModal <span class="text-fuchsia-300">from</span> <span class="text-orange-300">"@/components/icons/Rocket.vue"</span>;
+
+<span class="text-green-200">// some code for obtaining table's data and configuration</span>
+
+<span class="text-sky-500">const</span> <span class="text-sky-300">table</span> = <span class="text-sky-500">new</span> <span class="text-emerald-400">Table</span>(<span class="text-orange-300">"My Table"</span>, <span class="text-sky-300">exampleModels</span>, <span class="text-sky-300">options</span>);
+
+<span class="text-green-200">// add a button</span>
+<span class="text-sky-300">table</span>.<span class="text-yellow-300">addButton</span>(
+  OpenModal, 
+  (<span class="text-sky-300">model</span>) => {
+    alert(<span class="text-orange-300">`Clicked row: ${JSON.stringify(model)}`</span>);
+  }, 
+  <span class="text-orange-300">"Open"</span>, 
+  <span class="text-orange-300">"modal"</span>
+);
+</code>
+</pre>
+			<div
+				class="flex flex-row rounded-lg p-4 mb-6 justify-center items-center"
+			>
+				<GridEmerald
+					:getter="() => tableWithButton"
+					class="inline-block"
+					style="width: 1200px"
+				/>
+			</div>
 		</div>
 	</div>
 </template>
@@ -164,9 +222,10 @@
 <script setup>
 	import GridGreyMonochrome from "@/components/GridGreyMonochrome.vue";
 	import { Table } from "@/scripts/classes";
-
+	import OpenModal from "@/components/icons/OpenModal.vue";
 	import Rocket from "@/components/icons/Rocket.vue";
 	import GridDark from "@/components/GridDark.vue";
+	import GridEmerald from "@/components/GridEmerald.vue";
 
 	const exampleModels = [
 		{
@@ -345,6 +404,17 @@
 		showFilters: true,
 	};
 
+	const tableEmerald = new Table("My Table", exampleModels, options);
 	const tableGray = new Table("My Table", exampleModels, options);
 	const tableDark = new Table("My Table", exampleModels, options);
+
+	const tableWithButton = new Table("My Table", exampleModels, options);
+	tableWithButton.addButton(
+		OpenModal,
+		(model) => {
+			alert(`Clicked row: ${JSON.stringify(model)}`);
+		},
+		"Open",
+		"modal"
+	);
 </script>

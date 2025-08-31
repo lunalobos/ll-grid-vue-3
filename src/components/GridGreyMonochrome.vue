@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="flex flex-row justify-end p-4 rounded-b-xl bg-gray-200 ">
+        <div class="flex flex-row justify-normal p-4 rounded-b-xl bg-gray-200 ">
             <button
                 class="flex flex-row rounded-lg bg-gray-400 hover:bg-gray-500 cursor-pointer text-gray-50 p-1 px-2 mr-2"
                 @click="() => props.getter().removeAllFilters()">

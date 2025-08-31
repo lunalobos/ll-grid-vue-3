@@ -1,57 +1,57 @@
 <template>
-    <div class="border border-gray-600 rounded-xl">
-        <div class="flex flex-row justify-center p-1 rounded-t-xl bg-gray-600 ">
-            <h3 v-show="getter().showTitle" class="text-lg font-medium text-gray-200 m-1">{{ title }}</h3>
+    <div class=" rounded-xl">
+        <div class="flex flex-row justify-center p-1 rounded-t-xl bg-emerald-400 ">
+            <h3 v-show="getter().showTitle" class="text-lg font-medium text-white m-1">{{ title }}</h3>
         </div>
         <div class="grid" :style="`grid-template-columns: repeat(${widthInfo.total}, minmax(0, 1fr))`">
-            <GridHeaderDark v-for="header in headers" :getter="props.getter" :name="header.name"
-                class="bg-gray-600 p-1 text-white text-lg font-medium" 
+            <GridHeaderEmerald v-for="header in headers" :getter="props.getter" :name="header.name"
+                class="bg-emerald-400 p-1 text-white text-lg font-medium" 
                 :style="`grid-column: span ${widthInfo.widths[header.name]} / span ${widthInfo.widths[header.name]};`"/>
         </div>
         <div class="overflow-y-auto lg:max-h-[400px] md:max-h-[300px] sm:max-h-[200px]">
             <div v-for="(row, rowNum) in rows" class="grid"
                 :style="`grid-template-columns: repeat(${widthInfo.total}, minmax(0, 1fr))`">
-                <div v-for="cell in row.cells" class="p-1"
-                    :style="`background-color: ${isOdd(rowNum) ? 'oklch(37.3% 0.034 259.733)' : 'oklch(21% 0.034 264.665)'}; grid-column: span ${widthInfo.widths[cell.key]} / span ${widthInfo.widths[cell.key]};`">
+                <div v-for="cell in row.cells" class="p-1 bg-white"
+                    :style="`grid-column: span ${widthInfo.widths[cell.key]} / span ${widthInfo.widths[cell.key]};`">
                     <div v-if="cell.buttonInfo" class="relative flex flex-row text-sm items-center justify-center">
-                        <button class="flex flex-row p-2 cursor-pointer rounded-lg bg-gray-600 hover:bg-gray-500 text-white"
+                        <button class="flex flex-row p-2 cursor-pointer rounded-lg bg-emerald-400 hover:bg-emerald-500 text-white"
                             @click="applyEffect(cell.buttonInfo, row)">
                             <component :is="cell.buttonInfo.icon()"></component><span>{{ cell.buttonInfo.text }}</span>
                         </button>
                     </div>
-                    <div v-else class="relative flex flex-row text-sm items-center justify-center text-white">
+                    <div v-else class="relative flex flex-row text-sm items-center justify-center">
                         <span class="inline-block align-middle p-2">{{ cell.value.formattedValue() }}</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="flex flex-row justify-normal p-4 rounded-b-xl bg-gray-800 ">
+        <div class="flex flex-row justify-normal p-4 rounded-b-xl bg-white ">
             <button
-                class="flex flex-row rounded-lg bg-gray-600 hover:bg-gray-500 cursor-pointer text-gray-50 p-1 px-2 mr-2"
+                class="flex flex-row rounded-lg bg-emerald-400 hover:bg-emerald-500 cursor-pointer text-white p-1 px-2 mr-2"
                 @click="() => props.getter().removeAllFilters()">
                 <Trash /><span class="ml-1">Remove filters</span>
             </button>
-            <label class="p-1 mr-1 font-medium text-gray-200">
+            <label class="p-1 mr-1 font-medium text-gray-800">
                 Rows per page:
             </label>
-            <select class="bg-gray-900 rounded-lg p-1 mr-2 text-gray-50" @change="(event) => props.getter().setPageSize(event.target.value)">
-                <option v-for="size of pagination" class="bg-gray-900">{{ size }}</option>
+            <select class="bg-white rounded-lg p-1 mr-2" @change="(event) => props.getter().setPageSize(event.target.value)">
+                <option v-for="size of pagination" class="rounded-lg bg-gray-100">{{ size }}</option>
             </select>
-            <button class="rounded-lg hover:bg-gray-700 cursor-pointer p-1 text-gray-50" @click="() => props.getter().firstPage()">
+            <button class="rounded-lg hover:bg-emerald-300 cursor-pointer p-1" @click="() => props.getter().firstPage()">
                 <ChevronDoubleLeft />
             </button>
-            <button class="rounded-lg hover:bg-gray-700 cursor-pointer p-1 text-gray-50"
+            <button class="rounded-lg hover:bg-emerald-300 cursor-pointer p-1"
                 @click="() => props.getter().previousPage()">
                 <ChevronLeft />
             </button>
-            <label class="p-1 font-medium text-gray-200">
+            <label class="p-1 font-medium text-gray-800">
                 {{ pagesLabelContent }}
             </label>
-            <button class="rounded-lg hover:bg-gray-700 cursor-pointer p-1 text-gray-50" @click="() => props.getter().nextPage()">
+            <button class="rounded-lg hover:bg-emerald-300 cursor-pointer p-1" @click="() => props.getter().nextPage()">
                 <ChevronRight />
             </button>
-            <button class="rounded-lg hover:bg-gray-700 cursor-pointer p-1 text-gray-50" @click="() => props.getter().lastPage()">
+            <button class="rounded-lg hover:bg-emerald-300 cursor-pointer p-1" @click="() => props.getter().lastPage()">
                 <ChevronDoubleRight />
             </button>
         </div>
@@ -60,13 +60,13 @@
 </template>
 
 <script setup>
-import GridHeaderDark from './GridHeaderDark.vue';
 import { watch, ref } from 'vue';
 import ChevronDoubleRight from './icons/ChevronDoubleRight.vue';
 import ChevronRight from './icons/ChevronRight.vue';
 import ChevronLeft from './icons/ChevronLeft.vue';
 import ChevronDoubleLeft from './icons/ChevronDoubleLeft.vue';
 import Trash from './icons/Trash.vue';
+import GridHeaderEmerald from './GridHeaderEmerald.vue';
 
 const props = defineProps({
     getter: { type: Function, required: true }
