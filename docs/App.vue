@@ -1,12 +1,28 @@
 <template>
 	<div class="flex justify-center">
 		<div class="lg:w-2/3 md:w-5/6 sm:w-full p-4">
-			<div class="flex flex-row justify-center">
-				<div class="p-2">
-					<Rocket class="h-5 w-5" />
+			<div class="flex flex-row justify-center w-full ">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="w-64 h-64">
+					<path d="M64 20 L94 80 H74 L64 60 L54 80 H34 Z" fill="#42b883" />
+					<path d="M64 20 L94 80 H84 L64 40 L44 80 H34 Z" fill="#35495e" />
+					<g stroke="#42b883" stroke-width="4" opacity="0.8">
+						<line x1="20" y1="48" x2="108" y2="48" />
+						<line x1="20" y1="80" x2="108" y2="80" />
+						<line x1="48" y1="20" x2="48" y2="108" />
+						<line x1="80" y1="20" x2="80" y2="108" />
+					</g>
+				</svg>
+			</div>
+
+			<div class="flex flex-col justify-center w-full items-center">
+				
+				<div class="">
+					<h1 class="text-5xl font-bold mb-4">LL-Grid</h1>
+
 				</div>
-				<div class="p-1">
-					<h1 class="text-2xl font-bold mb-4">LL-Grid for Vue 3</h1>
+				<div class="">
+					<h2 class="text-xl  mb-4">for Vue 3</h2>
+					
 				</div>
 			</div>
 			<div class="p-1">
@@ -174,8 +190,8 @@
 				row.
 			</p>
 			<p class="mb-4">
-				Buttons has a predetermined style and you can pass an svg icon wrapped as a
-				vue component. Also you will need to pass the function that will be
+				Buttons has a predetermined style and you can pass an svg icon wrapped
+				as a vue component. Also you will need to pass the function that will be
 				executed when the button is clicked, the button text, and the column
 				name.
 			</p>
@@ -189,7 +205,7 @@
 			>
 <code>
 <span class="text-fuchsia-300">import</span> { <span class="text-cyan-200">Table</span> } <span class="text-fuchsia-300">from</span> <span class="text-orange-300">"ll-grid-vue-3"</span>;
-<span class="text-fuchsia-300">import</span> OpenModal <span class="text-fuchsia-300">from</span> <span class="text-orange-300">"@/components/icons/Rocket.vue"</span>;
+<span class="text-fuchsia-300">import</span> OpenModal <span class="text-fuchsia-300">from</span> <span class="text-orange-300">"@/components/icons/OpenModal.vue"</span>;
 
 <span class="text-green-200">// some code for obtaining table's data and configuration</span>
 
