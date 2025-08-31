@@ -1,7 +1,7 @@
 [![npm](https://img.shields.io/npm/v/ll-grid-vue-3?logo=npm)](https://www.npmjs.com/package/ll-grid-vue-3)
 ![License](https://img.shields.io/github/license/lunalobos/ll-grid-vue-3)
 
-![LL-Grid](https://media.canva.com/v2/image-resize/format:PNG/height:577/quality:100/uri:ifs%3A%2F%2FM%2F69dad9c4-d678-4d8c-9385-283389ffb108/watermark:F/width:921?csig=AAAAAAAAAAAAAAAAAAAAAFQMqkR3ZJEelnUhgh1uIBg9Jxx6vCWZF6_tYvGSfTs6&exp=1753748750&osig=AAAAAAAAAAAAAAAAAAAAANm_zzyQL1UH9JjjtDU6dTdecJ9quDSEa8WXO6Zn8Z_2&signer=media-rpc&x-canva-quality=screen_2x)
+![LL-Grid](https://ll-grid-vue-3.vercel.app/logo.webp)
 
 # LL-Grid for Vue 3
 
@@ -29,11 +29,11 @@ You can use the `GridDark` component in the same way, just replace `GridGreyMono
 
 ```vue
 <template>
-  <GridGreyMonochrome :getter="() => table" class="inline-block" style="width: 1100px"/>
+  <GridEmerald :getter="() => table" class="inline-block" style="width: 1100px"/>
 </template>
 
 <script setup>
-  import { GridGreyMonochrome, Table } from "ll-grid-vue-3";
+  import { GridEmerald, Table } from "ll-grid-vue-3";
 
   const exampleModels = [
     {
@@ -89,45 +89,4 @@ You can use the `GridDark` component in the same way, just replace `GridGreyMono
 
 ---
 
-## Example: GridGreyMonochrome
-
-This is how a `GridGreyMonochrome` component looks like:
-
-```vue
-<GridGreyMonochrome :getter="() => tableGray" class="inline-block" style="width: 1100px"/>
-```
-![GridGreyMonochrome](https://media.canva.com/v2/image-resize/format:JPG/height:394/quality:92/uri:ifs%3A%2F%2FM%2F91d16249-1ef1-4025-a23a-09a3dcc64542/watermark:F/width:1202?csig=AAAAAAAAAAAAAAAAAAAAACDpuwuTWEyBlKynYxfr4SV3e88K9gySj28jMHLTSUuU&exp=1753746914&osig=AAAAAAAAAAAAAAAAAAAAAC5lG-ZyNu_PPZ3HOwgldZ6JQk18e6-cu7YradEF0H2Y&signer=media-rpc&x-canva-quality=screen_2x)
-
-## Example: GridDark
-
-And this is how a `GridDark` component looks like:
-
-```vue
-<GridDark :getter="() => tableDark" class="inline-block" style="width: 1100px"/>
-```
-
-![GridDark](https://media.canva.com/v2/image-resize/format:JPG/height:394/quality:92/uri:ifs%3A%2F%2FM%2F854323cc-cd68-4210-8375-3e12e4b78879/watermark:F/width:1202?csig=AAAAAAAAAAAAAAAAAAAAAFrhPKwat-FndXf2x-ZTQnyQ7IKporlvKc-E7oVhwSUW&exp=1753746894&osig=AAAAAAAAAAAAAAAAAAAAAA7eQ3NVnIMg-rylfrYi1hRpn0NdPPDWCC3lUx79HSgE&signer=media-rpc&x-canva-quality=screen_2x)
-
-
----
-
-## Notes
-
-- The `getter` function is a function that returns the table object. This is used to avoid creating a big reactive object.
-- The `table` object is an instance of the `Table` class.
-- The `exampleModels` and `exampleTypes` are just example data that is used to populate the table.
-
-The table object can listen to changes in the data as long as you pass the new content through the `setContent` method.  
-The table object has an inner reactive trigger that is used as shared state by the Grid component.  
-So the grid will be updated if you use the `setContent` method, otherwise reactivity will not work.
-
-```js
-const newContent = [
-  // ...
-];
-
-// Set the new content for the table and specify the types of the columns
-// This will update the grid
-table.setContent(table.name, newContent);
-```
-
+For more details please refer to the [docs](https://ll-grid-vue-3.vercel.app/).
