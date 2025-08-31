@@ -4,11 +4,14 @@
 			<button
 				v-if="header.type !== 'button' && props.getter().showFilters"
 				@click="togleDropdown()"
-				class="cursor-pointer bg-gray-600 p-2 hover:bg-gray-500 rounded-lg opacity-70"
+				class="cursor-pointer bg-emerald-400 p-2 hover:bg-emerald-500 rounded-lg opacity-70"
 			>
 				<component :is="filled ? FilledFilter : Filter"> </component>
 			</button>
-			<div class="flex flex-row justify-center text-center p-2">
+
+			
+
+			<div class="flex flex-row text-center p-2 ">
 				<label class="cursor-pointer" @click="sort()">
 					{{ header.title }}
 				</label>
@@ -16,78 +19,78 @@
 					<component :is="sortIcon" />
 				</div>
 			</div>
+            
 		</div>
-
-		<div
-			v-if="showDropdown"
-			class="block absolute bg-gray-900 shadow-lg min-w-42 z-10 rounded-lg p-2"
-		>
-			<!-- the search input is a modified version of the first example from https://flowbite.com/docs/forms/search-input/ -->
-			<form class="max-w-md mx-auto" @submit.prevent="() => {}">
-				<div class="relative">
-					<div
-						class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
-					>
-						<svg
-							class="w-4 h-4 text-gray-9500 dark:text-gray-400"
-							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 20 20"
+        <div
+				v-if="showDropdown"
+				class="block absolute bg-white shadow-lg min-w-42 z-10 rounded-lg p-2"
+			>
+				<!-- the search input is a modified version of the first example from https://flowbite.com/docs/forms/search-input/ -->
+				<form class="max-w-md mx-auto" @submit.prevent="() => {}">
+					<div class="relative">
+						<div
+							class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
 						>
-							<path
-								stroke="currentColor"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-							/>
-						</svg>
+							<svg
+								class="w-4 h-4 text-emerald-500 dark:text-emerald-400"
+								aria-hidden="true"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 20 20"
+							>
+								<path
+									stroke="currentColor"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+								/>
+							</svg>
+						</div>
+						<input
+							type="search"
+							id="default-search"
+							class="block w-full p-2 ps-9 text-sm text-gray-900 border border-emerald-300 rounded-lg bg-white"
+							required
+							v-model="filterInput"
+						/>
 					</div>
-					<input
-						type="search"
-						id="default-search"
-						class="block w-full p-2 ps-9 text-sm text-gray-100 border border-gray-700 rounded-lg bg-gray-950"
-						required
-						v-model="filterInput"
-					/>
+				</form>
+				<div
+					class=" overflow-y-auto max-h-48 rounded-lg p-1 bg-white mt-1"
+				>
+					<ul>
+						<li
+							v-for="value in values"
+							:class="`${
+								isSelected(value) ? 'li-element-selected' : 'li-element-regular'
+							}`"
+							@click="togleValue(value)"
+						>
+							{{ value.formattedValue() }}
+						</li>
+					</ul>
 				</div>
-			</form>
-			<div
-				class="border border-gray-700 overflow-y-auto max-h-48 rounded-lg p-1 bg-gray-950 mt-1"
-			>
-				<ul>
-					<li
-						v-for="value in values"
-						:class="`${
-							isSelected(value) ? 'li-element-selected' : 'li-element-regular'
-						}`"
-						@click="togleValue(value)"
+				<div
+					v-show="selectedValues.length > 0"
+					class="mt-1 flex justify-center items-center"
+				>
+					<button
+						class="flex flex-row rounded-lg bg-emerald-400 hover:bg-emerald-500 cursor-pointer p-2 text-sm"
+						@click="applyFilter()"
 					>
-						{{ value.formattedValue() }}
-					</li>
-				</ul>
+						<Ok /><span class="ml-1 mr-1">Apply filter</span>
+					</button>
+				</div>
+				<div class="mt-1 flex justify-center items-center">
+					<button
+						class="flex flex-row rounded-lg bg-emerald-400 hover:bg-emerald-500 cursor-pointer p-2 text-sm"
+						@click="cleanFilter()"
+					>
+						<Trash /><span class="ml-1 mr-1">Clear filter</span>
+					</button>
+				</div>
 			</div>
-			<div
-				v-show="selectedValues.length > 0"
-				class="mt-1 flex justify-center items-center"
-			>
-				<button
-					class="flex flex-row rounded-lg bg-gray-600 hover:bg-gray-9500 cursor-pointer p-2 text-sm"
-					@click="applyFilter()"
-				>
-					<Ok /><span class="ml-1 mr-1">Apply filter</span>
-				</button>
-			</div>
-			<div class="mt-1 flex justify-center items-center">
-				<button
-					class="flex flex-row rounded-lg bg-gray-600 hover:bg-gray-9500 cursor-pointer p-2 text-sm"
-					@click="cleanFilter()"
-				>
-					<Trash /><span class="ml-1 mr-1">Clear filter</span>
-				</button>
-			</div>
-		</div>
 	</div>
 </template>
 
@@ -220,7 +223,7 @@
 		cursor: pointer;
 		display: block;
 		padding: calc(var(--spacing) * 2);
-		color: var(--color-white) /* #000 = #000000 */;
+		color: var(--color-black) /* #000 = #000000 */;
 
 		border-radius: var(--radius-lg) /* 0.5rem = 8px */;
 		font-size: var(--text-sm) /* 0.875rem = 14px */;
@@ -232,7 +235,7 @@
 
 		&:hover {
 			@media (hover: hover) {
-				background-color: var(--color-gray-800)
+				background-color: var(--color-emerald-200)
 					/* oklch(92.8% 0.006 264.531) = #e5e7eb */;
 			}
 		}
@@ -243,7 +246,7 @@
 		display: block;
 		padding: calc(var(--spacing) * 2);
 		color: var(--color-white) /* #fff = #ffffff */;
-		background-color: var(--color-gray-600)
+		background-color: var(--color-emerald-400)
 			/* oklch(70.7% 0.022 261.325) = #99a1af */;
 
 		border-radius: var(--radius-lg) /* 0.5rem = 8px */;
@@ -256,7 +259,7 @@
 
 		&:hover {
 			@media (hover: hover) {
-				background-color: var(--color-gray-700)
+				background-color: var(--color-emerald-300)
 					/* oklch(87.2% 0.01 258.338) = #d1d5dc */;
 			}
 		}

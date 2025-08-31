@@ -22,7 +22,7 @@
             
 		</div>
         <div
-				v-show="showDropdown"
+				v-if="showDropdown"
 				class="block absolute bg-gray-100 shadow-lg min-w-42 z-10 rounded-lg p-2"
 			>
 				<!-- the search input is a modified version of the first example from https://flowbite.com/docs/forms/search-input/ -->
